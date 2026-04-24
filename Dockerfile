@@ -2,7 +2,12 @@ FROM eclipse-temurin:17-jdk
 
 WORKDIR /app
 
-COPY build/libs/*.jar app.jar
+COPY . .
+
+RUN chmod +x gradlew
+RUN ./gradlew build
+
+RUN cp build/libs/*.jar app.jar
 
 EXPOSE 8080
 
